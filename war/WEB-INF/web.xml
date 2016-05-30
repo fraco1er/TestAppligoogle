@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<servlet>
+		<servlet-name>UserAuthentification</servlet-name>
+		<servlet-class>com.epsi.UserAuthentificationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserAuthentification</servlet-name>
+		<url-pattern>/UserAuthentification</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>TestAppligoogle</servlet-name>
+		<servlet-class>com.epsi.TestAppligoogleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestAppligoogle</servlet-name>
+		<url-pattern>/testappligoogle</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SetEmploye</servlet-name>
+		<servlet-class>com.epsi.SetEmployeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetEmploye</servlet-name>
+		<url-pattern>/SetEmploye</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SetEmployeWorker</servlet-name>
+		<servlet-class>com.epsi.SetEmployeWorker</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetEmployeWorker</servlet-name>
+		<url-pattern>/SetEmployeWorker</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>GetEmploye</servlet-name>
+		<servlet-class>com.epsi.GetEmployeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetEmploye</servlet-name>
+		<url-pattern>/GetEmploye</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>MyFirstFilter</filter-name>
+		<filter-class>com.epsi.MyFirstFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MyFirstFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+        <servlet-name>group1</servlet-name>
+        <servlet-class>com.epsi.InitParameterTestServlet</servlet-class>
+        <init-param>
+            <param-name>Nombre</param-name>
+            <param-value>18</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Ville</param-name>
+            <param-value>Paris</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
+        <servlet-name>group2</servlet-name>
+        <servlet-class>com.epsi.InitParameterTestServlet</servlet-class>
+        <init-param>
+            <param-name>Nombre</param-name>
+            <param-value>32</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Ville</param-name>
+            <param-value>Lyon</param-value>
+        </init-param>
+    </servlet>
+	 
+	<servlet-mapping>
+        <servlet-name>group1</servlet-name>
+        <url-pattern>/groupe1/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>group2</servlet-name>
+        <url-pattern>/groupe2/test</url-pattern>
+    </servlet-mapping>
+ 
+	<security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UserOnly</web-resource-name>
+            <url-pattern>/UserOnly/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+	
+	<servlet>
+	    <servlet-name>testAuth</servlet-name>
+	    <jsp-file>UserOnly/test.html</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>testAuth</servlet-name>
+	    <url-pattern>/UserOnly/test</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
